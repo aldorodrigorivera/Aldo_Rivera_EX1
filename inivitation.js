@@ -16,7 +16,11 @@ class Invitation {
     }
 
     sendAllActiveInvitation() {
-        this.activeUsers.map((user, index) => this.sendEmail(user.email, index));
+        this.activeUsers.map((user, index) => {
+            if(user.invitationCode === null){
+                this.sendEmail(user.email, index);
+            }
+        });
     } 
 }
 
